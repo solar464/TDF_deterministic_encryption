@@ -28,25 +28,14 @@ build:
 
 clean:
 	rm -fr floodberry/build
-	
+	rm -fr floodberry/ge25519_arithmetic.c
+	rm -fr floodberry/*.so
+
 	rm -fr __pycache__
-	rm -fr floodberry/__pycache__
-	rm -fr performance/__pycache__
-	rm -fr tests/__pycache__
-	rm -fr legacy/tests/__pycache__
-	rm -fr legacy/reedsolomon/__pycache__
-	rm -fr legacy/__pycache__
-	rm -fr *.pyc
-	rm -fr floodberry/*.pyc
-	rm -fr performance/*.pyc
-	rm -fr tests/*.pyc
-	rm -fr legacy/tests/*.pyc
-	rm -fr legacy/reedsolomon/*.pyc
-	rm -fr legacy/*.pyc
+	rm -fr */__pycache__
+	find . -name "*.p" -type f -delete
+	find . -name "*.pyc" -type f -delete
 	
-	rm -fr performance/*.p
-	rm -fr tests/*.p
-	rm -fr legacy/tests/*.p
 
 benchmark: 
 ifneq (,$(LEN))
