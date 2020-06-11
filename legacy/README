@@ -1,0 +1,36 @@
+Implementations of previous TDF constructions.
+
+ctdf example (complete_tdf.py):
+  character_size = 3
+  x = [0,1,2]
+
+  #Initialize new codec with keys and maximum encodable message
+  ctdf = CTDFCodec(max_len = len(x) * character_size)
+  
+  #alternatively, deserialize an existing CTDFCodec from a file
+  #ctdf = CTDFCodec.deserialize(filename)
+
+  #encode a message with custom character size
+  u = ctdf.encode(x, c=character_size)
+
+  #decode a ciphertext, result is a bitarray
+  result = ctdf.decode(u)
+    
+
+ltdf example (lossy_tdf.py):
+  character_size = 3
+  #initialize a binary erasure codec, see BEC.py
+  bec = BECCodec(c=character_size,nsym=3,t=10)
+  x = [0,1,2]
+
+  #initialize new codec with keys and maximum encodable message
+  ltdf = LTDFCodec(max_len = len(bec.encode(x)))
+
+  #encode message with a BECCodec
+  u = ltdf.encode(x, bec)
+
+  #decode a ciphertext, result is array of integers
+  result = ltdf.decode(u)
+
+For the lossy TDF, the binary erasure code (BEC.py) uses the modified ReedSolomon implementation in the folder reedsolomon/
+

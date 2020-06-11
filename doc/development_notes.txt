@@ -1,0 +1,390 @@
+10/4/18
+
+Successfully compiled
+525.868 ms
+
+easy-ecc
+ECC_BYTES: 32
+Got Random? 1
+621.273 ms
+
+micro-ecc
+public key size: 64
+private key size: 32
+628.111 ms
+
+floodberry/donna-ed25519
+public key size: 32
+private key size: 32
+29.8456 ms
+
+floodberry/donna-curve25519
+public key size: 32
+private key size: 32
+28.3086 ms
+
+10/5
+https://svn.python.org/projects/external/openssl-1.0.2a/test/ectest.c
+An example of using openssl to multiply points.
+  Will likely use floodberry/donna-ed25519 if this doesn't perform well.
+
+structs in ed25519-donna.h
+  pniels better than niels?
+point arithmetic in ed25519-donna-impl-base.h
+  do a naive version first with only full?
+
+assuming no need to keep exponents secret from encrypter
+  can scale all group elements of pp by adding rho to exponents and generating the key
+  floodberry's key generation is extremely fast due to the precomputed tables, keeping the exponents would leverage that fact.
+  would still need to keep it secret from receiver
+
+openssl/bn.h big numbers with serialization to byte buffers and modular arithmetic
+
+10/8 EC_get_builtin_curves
+
+81704
+SECG/WTLS curve over a 112 bit prime field
+705
+SECG curve over a 112 bit prime field
+706
+SECG curve over a 128 bit prime field
+707
+SECG curve over a 128 bit prime field
+708
+SECG curve over a 160 bit prime field
+709
+SECG curve over a 160 bit prime field
+710
+SECG/WTLS curve over a 160 bit prime field
+711
+SECG curve over a 192 bit prime field
+712
+SECG curve over a 224 bit prime field
+713
+NIST/SECG curve over a 224 bit prime field
+714
+SECG curve over a 256 bit prime field
+715
+NIST/SECG curve over a 384 bit prime field
+716
+NIST/SECG curve over a 521 bit prime field
+409
+NIST/X9.62/SECG curve over a 192 bit prime field
+410
+X9.62 curve over a 192 bit prime field
+411
+X9.62 curve over a 192 bit prime field
+412
+X9.62 curve over a 239 bit prime field
+413
+X9.62 curve over a 239 bit prime field
+414
+X9.62 curve over a 239 bit prime field
+415
+X9.62/SECG curve over a 256 bit prime field
+717
+SECG curve over a 113 bit binary field
+718
+SECG curve over a 113 bit binary field
+719
+SECG/WTLS curve over a 131 bit binary field
+720
+SECG curve over a 131 bit binary field
+721
+NIST/SECG/WTLS curve over a 163 bit binary field
+722
+SECG curve over a 163 bit binary field
+723
+NIST/SECG curve over a 163 bit binary field
+724
+SECG curve over a 193 bit binary field
+725
+SECG curve over a 193 bit binary field
+726
+NIST/SECG/WTLS curve over a 233 bit binary field
+727
+NIST/SECG/WTLS curve over a 233 bit binary field
+728
+SECG curve over a 239 bit binary field
+729
+NIST/SECG curve over a 283 bit binary field
+730
+NIST/SECG curve over a 283 bit binary field
+731
+NIST/SECG curve over a 409 bit binary field
+732
+NIST/SECG curve over a 409 bit binary field
+733
+NIST/SECG curve over a 571 bit binary field
+734
+NIST/SECG curve over a 571 bit binary field
+684
+X9.62 curve over a 163 bit binary field
+685
+X9.62 curve over a 163 bit binary field
+686
+X9.62 curve over a 163 bit binary field
+687
+X9.62 curve over a 176 bit binary field
+688
+X9.62 curve over a 191 bit binary field
+689
+X9.62 curve over a 191 bit binary field
+690
+X9.62 curve over a 191 bit binary field
+693
+X9.62 curve over a 208 bit binary field
+694
+X9.62 curve over a 239 bit binary field
+695
+X9.62 curve over a 239 bit binary field
+696
+X9.62 curve over a 239 bit binary field
+699
+X9.62 curve over a 272 bit binary field
+700
+X9.62 curve over a 304 bit binary field
+701
+X9.62 curve over a 359 bit binary field
+702
+X9.62 curve over a 368 bit binary field
+703
+X9.62 curve over a 431 bit binary field
+735
+WTLS curve over a 113 bit binary field
+736
+NIST/SECG/WTLS curve over a 163 bit binary field
+737
+SECG curve over a 113 bit binary field
+738
+X9.62 curve over a 163 bit binary field
+739
+SECG/WTLS curve over a 112 bit prime field
+740
+SECG/WTLS curve over a 160 bit prime field
+741
+WTLS curve over a 112 bit prime field
+742
+WTLS curve over a 160 bit prime field
+743
+NIST/SECG/WTLS curve over a 233 bit binary field
+744
+NIST/SECG/WTLS curve over a 233 bit binary field
+745
+WTLS curve over a 224 bit prime field
+749
+
+  IPSec/IKE/Oakley curve #3 over a 155 bit binary field.
+    Not suitable for ECDSA.
+      Questionable extension field!
+      750
+
+        IPSec/IKE/Oakley curve #4 over a 185 bit binary field.
+          Not suitable for ECDSA.
+            Questionable extension field!
+            921
+            RFC 5639 curve over a 160 bit prime field
+            922
+            RFC 5639 curve over a 160 bit prime field
+            923
+            RFC 5639 curve over a 192 bit prime field
+            924
+            RFC 5639 curve over a 192 bit prime field
+            925
+            RFC 5639 curve over a 224 bit prime field
+            926
+            RFC 5639 curve over a 224 bit prime field
+            927
+            RFC 5639 curve over a 256 bit prime field
+            928
+            RFC 5639 curve over a 256 bit prime field
+            929
+            RFC 5639 curve over a 320 bit prime field
+            930
+            RFC 5639 curve over a 320 bit prime field
+            931
+            RFC 5639 curve over a 384 bit prime field
+            932
+            RFC 5639 curve over a 384 bit prime field
+            933
+            RFC 5639 curve over a 512 bit prime field
+            934
+            RFC 5639 curve over a 512 bit prime field
+
+
+10/11
+
+pynacl
+import nacl.bindings.{crypto_scalarmult_base, crypto_scalarmult}
+
+https://github.com/pyca/pynacl/blob/c231bb806f37bbbd423a5210571f737ec2f246a3/src/nacl/bindings/crypto_scalarmult.py
+
+timeit.timeit("nacl.bindings.crypto_scalarmult_base(ffi.new(\"char[]\", b'1010101010101010101001'))", setup="import nacl; import nacl.bindings; from nacl._sodium import ffi;", number=512)
+0.049702893011271954
+
+int.to_bytes(length, "little")
+int.from_bytes(bytes, "little")
+
+nacl, curve25519 implementation has optimized away point addition and doubling...
+I guess extending the floodberry library would be a good exercise...
+
+10/14
+
+https://github.com/warner/python-ed25519/blob/a8732e8b6ba4e04e83c7ef05f86c565a2b2fc278/src/ed25519-supercop-ref/ge25519.c
+
+example of c extension
+
+began to experiment with floodberry's implementation. Frustration with arithmetic, scaling point by 1 should return original point, not what's happenning.
+
+10/15
+
+Resolved scaling arithmetic issues. I was being stupid by using values from the sliding window array before they had been initialized correctly.
+
+The implemented scaling function scales points 10 times slower than the public key generation process.
+
+Provided double_scalarmult_vartime does desired scaling about 3.8 times slower than base point scaling, I shall copy it to do better.
+
+Realized the given scalarmult_vartime is actually about the same as mine just without the attempt to prevent side channel attacks. Only adds when exponent is 1 at that index.
+
+Attempt to do it scalar_mult_fast failed, still noticeably slower than vartime implementation, will use scalarmult_vartime then.
+
+10/24
+
+first working version of Cython wrapper!
+time performance in ed_performance.py: 
+  0.22 ms for 5120 base scalings
+  0.29 ms for 5120 base scalings and to_affine()
+On par with pure c performance!
+
+#TODO add more functionality (equality check, check affine before to_affine, __repr__, etc.)
+
+11/4
+
+Implementing section 6, lossy TDF, lot of framework already there now.
+
+Erasure code: Reed Solomon as outer code, then each character converted to binary representation then each bit replicated for inner code.
+
+tomerfiliba Reed Solomon implementation only works in GF(255)
+  modified chunking to work correctly, when chunking the erase_pos they were subtracting 256 instead of 255
+
+11/5
+  Altered tomerfiliba Reed Solomon to use array('i',[...]) instead of bytearray for arbitrary GF. Performance hit shouldn't be a major issue.
+  Remember to feed it a new prime polynomial if not using GF(255), use findprime.
+
+11/6
+  Dealt with small point scaling performance issue in scalarmult_vartime, p1p1_to_partial doesn't change correctness. Just have to convert to full at the end.
+
+  Wrote function to calculate the probability of a bernoulli random variable with probability p, m trials sums to be above thres. Can use to evaluate various combinations of error correction parameters.
+
+11/8
+
+LTDFCodec to simplify testing, automatically keygen correct length based on message length specified. encode = F, decode = F_inv.
+
+c1 = multiplier resulting from error correction bits
+t  = multiplier resulting from repetition
+c  = multiplier resulting from character size
+
+11/29
+
+Can now use variable character size, modify GF_CHAR to do so. Set as global variable because the RSCodec initializes its tables as global variables as well, so only codecs with the same character sizes can function correctly at the same time.
+  This design is mostly to remind myself of this fact, just passing it in as another paramter may make it easy to forget.
+
+12/15
+  Managed to serialize and deserialize GE25519 point using pickle by writingcustom __getstate__, and __setstate__ methods that convert the point to bytes using ge25519_pack and ge25519_unpack_vartime.
+  Write and read as bytes, so use 'wb' and 'rb' to manipulate bytes:
+    pickle.dump(point, open('filename', 'wb'))
+    point = pickle.load(open('filename', mode='rb'))
+
+12/16
+  Modified GE25519 serialization (__getstate__) to return bytes instead of c_string to deal with null termination of c strings.
+  Note that GE25519(0) has different y values from unpacked char string.
+  Managed to serialize and deserialize LTDFCodec and LTDFCipherText. 
+
+1/22
+
+Separated GE25519 from virtualenv folder and generated Pipfile with pipenv to keep track of dependencies.
+
+2/1
+Checkup with Sanjam and Mohammad, new efficiency improvements remove need for error correction in next version.
+  Waiting for them to verify security proofs and to finalize schematics.
+
+2/2
+Dealt with serialization issue with GE25519 objects.
+  Deserialized lists of GE25519 points would only contain the 1st point repeating.
+  Resolve by converting __getstate__ to return list of integers instead of byte string. Consider changing to json at a later date.
+
+  Cleaned up directory and wrote many unit tests. 
+  
+  Still working on LTDFMatrix unit tests.
+  Perhaps work on simplifying LTDFCodec. Kind of a mess right now.
+
+2/4
+
+Rewrote LTDFCodec so that BECCodec is treated as a swappable component rather than baked into the LTDFCodec as in the previous implementation.
+
+BECCodec instances now can be used as arguments to a LTDFCodec.encode and can be constructed from the LTDFCipherText for use in LTDFCodec.decode.
+
+Rewrote tests to reflect this.
+
+2/8
+
+-Added performance benchmarking scripts in performance/
+-Added LTDFMatrix unit tests
+-Gathered some utility functions into utils.py
+-Generated requirements.txt with pipenv_to_requirements
+
+2/14
+
+Consider rewriting the input validation using decorators as here
+https://stackoverflow.com/questions/12154178/python-input-validity-and-using-asserts
+
+And change length checking (in encoding and decoding) to raise exceptions instead of assertion errors
+
+3/4
+
+Changed parameter checking for encoding/decoding to raise exceptions. Added LTDFError and BECError as custom exceptions.
+
+3/8
+
+Implementing improved tdf from memory.
+Note that bitwise operations on bitarrays of different endianess gives weird results.
+Finished draft with debugging statements in complete_tdf.py
+Should perhaps write unittests for it in future.
+
+3/11
+Since there's so much shared code between complete_tdf and lossy_tdf, created tdf_strucs.py to store base classes and shared data structures.
+
+Existing unittest tests altered to match.
+
+Still need to do complete_tdf.py unittest tests.
+
+3/21
+
+Added unit tests for complete_tdf. Added all_to_affine() functions to IndexKey, TrapdoorKey, TDFCodec to make comparisons easier during tests.
+
+4/28
+  Added a Makefile to ease setup and testing
+
+4/29
+  rsync to sync machines
+  rsync -avzhe ssh --progress --exclude 'tdf_env' kwliu@pompeii.ocf.berkeley.edu:TDF .
+  rsync -av ssh --update --progress --exclude 'tdf_env' kwliu@pompeii.ocf.berkeley.edu:TDF .
+
+5/2
+  Massive overhaul, moved current implementation to legacy folder with tests and alter Makefile to allow testing the legacy.
+  New even simpler implementation to be constructed as ddh_tdf.py. Use complete_tdf.py as a base.
+  Copied unit tests as well, now all new tests for DDH_TDF and TDFVector pass.
+  Add legacy options and clean to Makefile.
+
+5/4
+  Split codec to DDH_TDF_IndexKey and DDH_TDF_Trapdoor key since only 1 is needed for encoding and decoding respectively.
+  Tests altered to match.
+  Added typing information, but needed to ignore floodberry and bitarray imports.
+
+5/6
+  Added benchmarking capabilities and modified Makefile to reflect this.
+  Makefile can now detect test data files and generate them if none are present.
+  Makefile now cleans .pyc files and performance/
+  Remove pad_bit() function since redundant
+
+  Consider moving the utils.py to legacy since only deserialize and serialize are used in main implementation, testing, and benchmarking.
